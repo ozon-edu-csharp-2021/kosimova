@@ -17,6 +17,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchandiseService", "src\MerchandiseService\MerchandiseService.csproj", "{B78E7DAF-5385-493D-8113-225396FEA4F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{0CDA0FBE-6D4E-4269-8F2C-F777C4D312BE}"
+ProjectSection(SolutionItems) = preProject
+	deploy\docker-compose.yaml = deploy\docker-compose.yaml
+EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

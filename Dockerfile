@@ -23,9 +23,3 @@ WORKDIR /app
 
 COPY --from=publish /app/publish .
 ENTRYPOINT [ "dotnet", "MerchandiseService.dll"] 
-
-
-
-#build:
-#  context: . //вот тут путь к папке с Dockerfile
-#  dockerfile: Dockerfile-alternate // а тут название файла
