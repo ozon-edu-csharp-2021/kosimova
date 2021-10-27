@@ -20,6 +20,9 @@ namespace MerchandiseService.Infrastructure.Middlewares
         
         public async Task InvokeAsync(HttpContext context)
         {
+            if (context.Request.ContentType.Contains("grpc"))
+                return;
+            
             await LogRequest(context);
             await _next(context);
         }
