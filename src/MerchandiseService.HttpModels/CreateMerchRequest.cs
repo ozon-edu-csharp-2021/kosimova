@@ -4,8 +4,8 @@ namespace MerchandiseService.HttpModels
     {
         public int EmployeeId { get; set;  }
         public MerchType MerchType { get; set; }
+        
     }
-
     public enum MerchType
     {
         /// <summary>
