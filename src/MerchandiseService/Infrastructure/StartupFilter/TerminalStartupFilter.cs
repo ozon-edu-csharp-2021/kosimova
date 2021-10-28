@@ -11,11 +11,11 @@ namespace MerchandiseService.Infrastructure.StartupFilter
         {
             return app =>
             {
+                app.UseMiddleware<RequestLoggingMiddleware>();
+                app.UseMiddleware<ResponseLoggingMiddleware>();
                 app.Map("/version", builder => builder.UseMiddleware<VersionMiddleware>());
                 app.Map("/ready", builder => builder.UseMiddleware<IsReadyMiddleware>());
                 app.Map("/live", builder => builder.UseMiddleware<IsLiveMiddleware>());
-                app.UseMiddleware<RequestLoggingMiddleware>();
-                app.UseMiddleware<ResponseLoggingMiddleware>();
                 next(app);
             };
         }

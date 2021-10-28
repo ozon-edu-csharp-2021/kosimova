@@ -12,6 +12,7 @@ namespace MerchandiseService.Controllers.V1
     public class MerchandiseController : ControllerBase
     {
         private readonly Services.MerchandiseService _merchandiseService;
+        
         [HttpPost("create")]
         public async Task<ActionResult<CreateMerchResponse>> CreateEmployeeMerch(CreateMerchRequest request, CancellationToken token)
         {
@@ -28,7 +29,7 @@ namespace MerchandiseService.Controllers.V1
         }
 
         [HttpGet("getEmployeeHistory")]
-        public async Task<ActionResult<GetMerchHistoryResponse>> GetMerchHistory(GetMerchHistoryRequest request, CancellationToken token)
+        public async Task<ActionResult<GetMerchHistoryResponse>> GetMerchHistory([FromQuery]GetMerchHistoryRequest request, CancellationToken token)
         {
             var result = await _merchandiseService.GetByEmployeeId(request.EmployeeId, token);
             return Ok(result);

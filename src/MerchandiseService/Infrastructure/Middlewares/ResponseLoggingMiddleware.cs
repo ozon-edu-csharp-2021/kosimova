@@ -20,9 +20,6 @@ namespace MerchandiseService.Infrastructure.Middlewares
         
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.ContentType.Contains("grpc"))
-                return;
-            
             await _next(context);
             await LogResponse(context);
         }
@@ -30,7 +27,7 @@ namespace MerchandiseService.Infrastructure.Middlewares
         {
             try
             {
-                if (context.Response.Headers.Count > 0)
+                if (context.Response.Headers.Count > 0 )
                 {
                     var headerText = await GetResponseHeaderData(context);
 

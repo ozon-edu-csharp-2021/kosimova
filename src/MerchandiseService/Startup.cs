@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MerchandiseService.Infrastructure.Interceptors;
+using MerchandiseService.Infrastructure.StartupFilter;
+using MerchandiseService.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +19,7 @@ namespace MerchandiseService
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IMerchandiseService, Services.MerchandiseService>();
             services.AddGrpc(opt => opt.Interceptors.Add<LoggingInterceptor>());
         }
 
@@ -32,7 +35,8 @@ namespace MerchandiseService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
+                endpoints.MapGrpcService<Services.MerchandiseService>();
+                endpoints.MapControllers();
             });
         }
     }

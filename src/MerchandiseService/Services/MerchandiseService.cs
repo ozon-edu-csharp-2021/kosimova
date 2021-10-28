@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using MerchandiseService.HttpModels;
 using MerchandiseService.Models;
 using MerchandiseService.Services.Interfaces;
 
@@ -8,14 +10,19 @@ namespace MerchandiseService.Services
 {
     public class MerchandiseService : IMerchandiseService
     {
-        public Task<MerchItemModel> Create(CreateMerchModel model, CancellationToken _)
+        public async Task<MerchItemModel> Create(CreateMerchModel model, CancellationToken _)
         {
-            throw new System.NotImplementedException();
+            return new MerchItemModel(1, model.EmployeeId, DateTime.Now, MerchType.WelcomePack);
         }
 
-        public Task<List<MerchItemModel>> GetByEmployeeId(int itemId, CancellationToken _)
+        public async Task<List<MerchItemModel>> GetByEmployeeId(int employeeId, CancellationToken _)
         {
-            throw new System.NotImplementedException();
+            return new List<MerchItemModel>()
+            {
+                new MerchItemModel(1, employeeId, DateTime.Now, MerchType.WelcomePack),
+                new MerchItemModel(2, employeeId, DateTime.Now, MerchType.ConferenceListenerPack),
+                new MerchItemModel(3, employeeId, DateTime.Now, MerchType.ConferenceSpeakerPack)
+            };
         }
     }
 }
