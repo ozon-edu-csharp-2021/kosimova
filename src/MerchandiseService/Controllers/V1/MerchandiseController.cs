@@ -13,6 +13,9 @@ namespace MerchandiseService.Controllers.V1
     {
         private readonly Services.MerchandiseService _merchandiseService;
         
+        /// <summary>
+        /// Метод, который будет формировать новый запрос на выдачу определённого мёрча определённому сотруднику.
+        /// </summary>
         [HttpPost("create")]
         public async Task<ActionResult> CreateEmployeeMerch(CreateMerchRequest request, CancellationToken token)
         {
@@ -24,6 +27,9 @@ namespace MerchandiseService.Controllers.V1
             return Ok();
         }
 
+        /// <summary>
+        /// Метод, который будет формировать список мерчов, которые ранее получал сотрудник с идентификатором, получаемым на вход
+        /// </summary>
         [HttpGet("getEmployeeHistory")]
         public async Task<ActionResult<GetMerchHistoryResponse>> GetMerchHistory([FromQuery]GetMerchHistoryRequest request, CancellationToken token)
         {
