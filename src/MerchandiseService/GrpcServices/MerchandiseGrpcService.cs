@@ -5,7 +5,7 @@ using Grpc.Core;
 using MerchandiseService.Grpc;
 using MerchandiseService.Models;
 using MerchandiseService.Services.Interfaces;
-using MerchType = MerchandiseService.HttpModels.MerchType;
+using MerchType = MerchandiseService.HttpClients.Models.MerchType;
 using Google.Protobuf.WellKnownTypes;
 using Enum = System.Enum;
 

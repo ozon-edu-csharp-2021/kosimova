@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using MerchandiseService.HttpModels;
+using MerchandiseService.HttpClients.Models;
 using MerchandiseService.Models;
 using MerchandiseService.Services.Interfaces;
 

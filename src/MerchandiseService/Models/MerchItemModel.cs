@@ -1,5 +1,6 @@
 using System;
-using MerchandiseService.HttpModels;
+using MerchandiseService.HttpClients;
+using MerchandiseService.HttpClients.Models;
 
 namespace MerchandiseService.Models
 {

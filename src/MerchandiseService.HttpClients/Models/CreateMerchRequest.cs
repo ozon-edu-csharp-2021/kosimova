@@ -1,4 +1,4 @@
-namespace MerchandiseService.HttpModels
+namespace MerchandiseService.HttpClients.Models
 {
     public class CreateMerchRequest
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using MerchandiseService.HttpModels;
+using MerchandiseService.HttpClients.Models;
 using MerchandiseService.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,18 +14,14 @@ namespace MerchandiseService.Controllers.V1
         private readonly Services.MerchandiseService _merchandiseService;
         
         [HttpPost("create")]
-        public async Task<ActionResult<CreateMerchResponse>> CreateEmployeeMerch(CreateMerchRequest request, CancellationToken token)
+        public async Task<ActionResult> CreateEmployeeMerch(CreateMerchRequest request, CancellationToken token)
         {
             var item = await _merchandiseService.Create(new CreateMerchModel()
             {
                 EmployeeId = request.EmployeeId,
                 MerchType = request.MerchType
             }, token);
-            var result = new CreateMerchResponse()
-            {
-                Status = item.ItemId == 0 ? "FAILURE" : "SUCCESS"
-            };
-            return Ok(request);
+            return Ok();
         }
 
         [HttpGet("getEmployeeHistory")]

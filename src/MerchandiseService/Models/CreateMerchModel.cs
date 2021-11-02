@@ -1,4 +1,4 @@
-using MerchandiseService.HttpModels;
+using MerchandiseService.HttpClients.Models;
 
 namespace MerchandiseService.Models
 {
