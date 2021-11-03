@@ -7,8 +7,8 @@ namespace MerchandiseService.Services.Interfaces
 {
     public interface IMerchandiseService
     {
-        Task<MerchItemModel> Create(CreateMerchModel model,CancellationToken _);
+        Task<MerchItemModel> CreateAsync(CreateMerchModel model,CancellationToken _);
         
-        Task<List<MerchItemModel>> GetByEmployeeId(int itemId, CancellationToken _);
+        Task<List<MerchItemModel>> GetByEmployeeIdAsync(int itemId, CancellationToken _);
     }
 }

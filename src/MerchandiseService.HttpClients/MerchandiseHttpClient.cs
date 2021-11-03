@@ -29,12 +29,12 @@ namespace MerchandiseService.HttpClients
             _merchandiseHttpClient = RestClient.For<IMerchandiseHttpClient>("http://localhost:5001");
         }
 
-        public async Task<CreateMerchResponse> Create(CreateMerchRequest request, CancellationToken token)
+        public async Task<CreateMerchResponse> CreateAsync(CreateMerchRequest request, CancellationToken token)
         {
             return await _merchandiseHttpClient.CreateAsync(request, token);
         }
 
-        public async Task<GetMerchHistoryResponse> GetByEmployeeId(GetMerchHistoryRequest request, CancellationToken token)
+        public async Task<GetMerchHistoryResponse> GetByEmployeeIdAsync(GetMerchHistoryRequest request, CancellationToken token)
         {
             return await _merchandiseHttpClient.GetByEmployeeIdAsync(request, token);
         }

@@ -10,12 +10,12 @@ namespace MerchandiseService.Services
 {
     public class MerchandiseService : IMerchandiseService
     {
-        public async Task<MerchItemModel> Create(CreateMerchModel model, CancellationToken _)
+        public async Task<MerchItemModel> CreateAsync(CreateMerchModel model, CancellationToken token)
         {
             return new MerchItemModel(1, model.EmployeeId, DateTime.Now, MerchType.WelcomePack);
         }
 
-        public async Task<List<MerchItemModel>> GetByEmployeeId(int employeeId, CancellationToken _)
+        public async Task<List<MerchItemModel>> GetByEmployeeIdAsync(int employeeId, CancellationToken _)
         {
             return new List<MerchItemModel>()
             {

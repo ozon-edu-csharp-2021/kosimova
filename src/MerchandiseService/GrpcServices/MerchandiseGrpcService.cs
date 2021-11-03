@@ -15,9 +15,9 @@ namespace MerchandiseService.GrpcServices
     {
         private readonly IMerchandiseService _service;
 
-        public override async Task<CreateMerchResponse> CreateEmployeeMerch(CreateMerchRequest request, ServerCallContext context)
+        public override async Task<CreateMerchResponse> CreateEmployeeMerchAsync(CreateMerchRequest request, ServerCallContext context)
         {
-            var item = await _service.Create(new CreateMerchModel()
+            var item = await _service.CreateAsync(new CreateMerchModel()
             {
                 EmployeeId = request.EmployeeId,
                 MerchType = (MerchType)Enum.Parse(typeof(MerchType), request.MerchType.ToString())
@@ -25,13 +25,13 @@ namespace MerchandiseService.GrpcServices
             }, context.CancellationToken);
             return (new CreateMerchResponse()
             {
-                Status = item.ItemId == 0 ? "FAILURE" : "SUCCESS"
+                MerchId = item.ItemId
             });
         }
 
-        public override async Task<GetMerchHistoryResponse> GetMerchHistory(GetMerchHistoryRequest request, ServerCallContext context)
+        public override async Task<GetMerchHistoryResponse> GetMerchHistoryAsync(GetMerchHistoryRequest request, ServerCallContext context)
         {
-            var employeeMerchs = await _service.GetByEmployeeId(request.EmployeeId, context.CancellationToken);
+            var employeeMerchs = await _service.GetByEmployeeIdAsync(request.EmployeeId, context.CancellationToken);
             return new GetMerchHistoryResponse()
             {
                 EmployeeMerches = { employeeMerchs.Select(x => new EmployeeMerchItem()

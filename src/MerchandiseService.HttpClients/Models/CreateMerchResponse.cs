@@ -2,6 +2,6 @@ namespace MerchandiseService.HttpClients.Models
 {
     public class CreateMerchResponse
     {
-        public string Status { get; set;  }
+        public int MerchId { get; set; }
     }
 }
