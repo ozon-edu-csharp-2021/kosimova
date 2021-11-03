@@ -7,40 +7,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using MerchandiseService.HttpClients.Models;
 using Newtonsoft.Json;
+using RestEase;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace MerchandiseService.HttpClients
 {
     public interface IMerchandiseHttpClient
     {
-        Task<CreateMerchResponse> Create(CreateMerchRequest request, CancellationToken token);
-        Task<GetMerchHistoryResponse> GetByEmployeeId(GetMerchHistoryRequest request, CancellationToken token);
+        Task<CreateMerchResponse> CreateAsync(CreateMerchRequest request, CancellationToken token);
+        Task<GetMerchHistoryResponse> GetByEmployeeIdAsync(GetMerchHistoryRequest request, CancellationToken token);
     }
 
-    public class MerchandiseHttpClient : IMerchandiseHttpClient
+    public class MerchandiseHttpClient
     {
         private readonly HttpClient _httpClient;
+        private readonly IMerchandiseHttpClient _merchandiseHttpClient;
 
         public MerchandiseHttpClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            _merchandiseHttpClient = RestClient.For<IMerchandiseHttpClient>("http://localhost:5001");
         }
 
         public async Task<CreateMerchResponse> Create(CreateMerchRequest request, CancellationToken token)
         {
-            var json = JsonConvert.SerializeObject(request);
-            var requestString = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync("v1/api/merch/create", requestString, token);
-            var result = await response.Content.ReadAsStringAsync(token);
-            return JsonSerializer.Deserialize<CreateMerchResponse>(result);
+            return await _merchandiseHttpClient.CreateAsync(request, token);
         }
 
         public async Task<GetMerchHistoryResponse> GetByEmployeeId(GetMerchHistoryRequest request, CancellationToken token)
         {
-            var response = await _httpClient.GetAsync($"v1/api/merch/getEmployeeHistory?EmployeeId={request.EmployeeId}", token);
-            var result = await response.Content.ReadAsStringAsync(token);
-            return JsonSerializer.Deserialize<GetMerchHistoryResponse>(result);
+            return await _merchandiseHttpClient.GetByEmployeeIdAsync(request, token);
         }
     }
 }
