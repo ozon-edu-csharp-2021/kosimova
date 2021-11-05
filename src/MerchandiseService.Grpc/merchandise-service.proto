@@ -1,0 +1,43 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "MerchandiseService.Grpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service MerchandiseGrpc {
+  rpc CreateEmployeeMerchAsync (CreateMerchRequest) returns (CreateMerchResponse);
+  rpc GetMerchHistoryAsync (GetMerchHistoryRequest) returns (GetMerchHistoryResponse);
+  
+}
+
+message CreateMerchRequest {
+    int32 EmployeeId = 1;
+    MerchType MerchType = 2;
+}
+
+message CreateMerchResponse {
+    int32 MerchId = 1;
+}
+
+message GetMerchHistoryRequest {
+  int32 EmployeeId = 1;
+}
+
+message GetMerchHistoryResponse {
+  repeated EmployeeMerchItem EmployeeMerches = 1;
+}
+
+message EmployeeMerchItem {
+  MerchType MerchType = 1;
+  google.protobuf.Timestamp DateOfIssue = 2;
+}
+
+
+enum MerchType {
+  WelcomePack = 0;
+  ConferenceListenerPack = 1;
+  ConferenceSpeakerPack = 2;
+  ProbationPeriodEndingPack = 3;
+  VeteranPack = 4;
+}
