@@ -1,0 +1,19 @@
+using MerchandiseService.Domain.Models;
+
+namespace MerchandiseService.Domain.AggregateModels.MerchItemAggreagate
+{
+    public class ClothingSize: Enumeration
+    {
+        public static ClothingSize XS = new(1, nameof(XS));
+        public static ClothingSize S = new(2, nameof(S));
+        public static ClothingSize M = new(3, nameof(M));
+        public static ClothingSize L = new(4, nameof(L));
+        public static ClothingSize XL = new(5, nameof(XL));
+        public static ClothingSize XXL = new(6, nameof(XXL));
+        public static ClothingSize XXXL = new(7, nameof(XXXL));
+
+        public ClothingSize(int id, string name) : base(id, name)
+        {
+        }
+    }
+}
