@@ -8,6 +8,7 @@ ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 	.gitignore = .gitignore
 	Dockerfile = Dockerfile
+	boubded_context_canvas.drawio = boubded_context_canvas.drawio
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4B8BB32-3202-4182-9422-09FCEC700297}"
