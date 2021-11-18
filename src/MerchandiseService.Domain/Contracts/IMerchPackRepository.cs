@@ -8,7 +8,7 @@ namespace MerchandiseService.Domain.Contracts
     /// <summary>
     /// Репозиторий для управления сущностью <see cref="MerchPack"/>
     /// </summary>
-    public interface IMerchPackItem : IGenericRepository<MerchPack>
+    public interface IMerchPackRepository : IGenericRepository<MerchPack>
     {
         /// <summary>
         /// Получить информацию о товарах для типа мерча
