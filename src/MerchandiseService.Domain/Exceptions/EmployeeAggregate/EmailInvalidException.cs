@@ -1,6 +1,6 @@
 using System;
 
-namespace MerchandiseService.Domain.AggregateModels.Exceptions.EmployeeAggregate
+namespace MerchandiseService.Domain.Exceptions.EmployeeAggregate
 {
     public class EmailInvalidException : Exception
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace MerchandiseService.Domain.AggregateModels.Exceptions.MerchOrderAggregate
+namespace MerchandiseService.Domain.Exceptions.MerchOrderAggregate
 {
     public class DateExceptions : Exception
     {

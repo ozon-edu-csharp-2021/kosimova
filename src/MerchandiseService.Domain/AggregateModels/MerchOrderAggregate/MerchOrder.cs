@@ -1,5 +1,5 @@
 using System;
-using MerchandiseService.Domain.AggregateModels.Exceptions.MerchOrderAggregate;
+using MerchandiseService.Domain.Exceptions.MerchOrderAggregate;
 using MerchandiseService.Domain.Models;
 
 namespace MerchandiseService.Domain.AggregateModels.MerchOrderAggregate

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using MerchandiseService.Domain.AggregateModels.Exceptions.EmployeeAggregate;
+using MerchandiseService.Domain.Exceptions.EmployeeAggregate;
 using MerchandiseService.Domain.Models;
 
 namespace MerchandiseService.Domain.AggregateModels.EmployeeAggregate
