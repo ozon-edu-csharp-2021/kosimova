@@ -10,7 +10,7 @@ namespace MerchandiseService.Domain.AggregateModels.EmployeeAggregate
     {
         public string Value { get; }
 
-        private Email(string emailString)
+        public Email(string emailString)
             => Value = emailString;
 
         public static Email Create(string emailString)
