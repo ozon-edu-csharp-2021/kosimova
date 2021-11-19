@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 using MerchandiseService.HttpClients.Models;
 using MerchandiseService.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ namespace MerchandiseService.Controllers.V1
     [Route("v1/api/merch")]
     public class MerchandiseController : ControllerBase
     {
+        private readonly IMediator _mediator;
         private readonly Services.MerchandiseService _merchandiseService;
         
         /// <summary>

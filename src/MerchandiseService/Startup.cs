@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 namespace MerchandiseService
 {
     public class Startup
@@ -20,6 +19,7 @@ namespace MerchandiseService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IMerchandiseService, Services.MerchandiseService>();
+            services.AddInfrastructureServices();
             services.AddGrpc(opt => opt.Interceptors.Add<LoggingInterceptor>());
         }
 

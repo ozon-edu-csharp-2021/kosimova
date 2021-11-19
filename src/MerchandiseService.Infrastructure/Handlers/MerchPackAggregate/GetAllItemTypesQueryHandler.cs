@@ -12,7 +12,7 @@ namespace MerchandiseService.Infrastructure.Handlers.MerchPackAggregate
     /// <summary>
     /// Получить список всех товаров, чтобы далее создавать/изменять мерч пакет:
     /// </summary>
-    public class GetAllItems : IRequestHandler<GetAllItemsQuery, List<ItemType>>
+    public class GetAllItemTypesQueryHandler : IRequestHandler<GetAllItemsQuery, List<ItemType>>
     {
         public async Task<List<ItemType>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
         {

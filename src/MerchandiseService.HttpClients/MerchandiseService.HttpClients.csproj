@@ -6,7 +6,6 @@
 
     <ItemGroup>
       <PackageReference Include="RestEase" Version="1.5.5" />
-      <ProjectReference Include="..\MerchandiseService.HttpModels\MerchandiseService.HttpModels.csproj" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
