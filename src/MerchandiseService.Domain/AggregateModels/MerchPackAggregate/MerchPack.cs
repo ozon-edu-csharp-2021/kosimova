@@ -9,10 +9,10 @@ namespace MerchandiseService.Domain.AggregateModels.MerchPackAggregate
 {
     public class MerchPack : Entity
     {
-        public MerchPack(MerchType type, List<ItemType> itemTypes)
+        public MerchPack(MerchType type, List<ItemType> items)
         {
             MerchType = type;
-            AddRangeOfItemTypes(itemTypes);
+            ItemTypes = items ?? new List<ItemType>();
         }
         
         public MerchType MerchType { get; }
@@ -26,7 +26,11 @@ namespace MerchandiseService.Domain.AggregateModels.MerchPackAggregate
         {
             if (newTypes == null || !newTypes.Any())
                 throw new ItemTypeException("There is no itemType to add");
-            ItemTypes.AddRange(newTypes);
+            foreach (var item in newTypes)
+            {
+                if (ItemTypes.Any(x => x.Id == item.Id)) continue;
+                AddItemType(item);
+            }
         }
         
         /// <summary>
@@ -35,8 +39,8 @@ namespace MerchandiseService.Domain.AggregateModels.MerchPackAggregate
         ///
         public void AddItemType(ItemType newType)
         {
-            if (ItemTypes.Any(x => x.Id != newType.Id))
-                throw new ItemTypeException("MerchPack already has such itemType");
+            if (ItemTypes.Any(x => x.Id == newType.Id))
+                throw new ItemTypeException($"MerchPack {newType.Name} already has such itemType");
             ItemTypes.Add(newType);
         }
     

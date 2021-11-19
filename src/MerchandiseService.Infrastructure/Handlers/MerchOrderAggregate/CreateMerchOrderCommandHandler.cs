@@ -43,14 +43,11 @@ namespace MerchandiseService.Infrastructure.Handlers.MerchOrderAggregate
             //create order:
             var newOrder = new MerchOrder(
                 new EmployeeId(employee.Id),
-                Enumeration
-                    .GetAll<ClothingSize>()
-                    .FirstOrDefault(it => it.Id.Equals(request.ClothingSize)),
-                Enumeration
-                    .GetAll<MerchType>()
-                    .FirstOrDefault(it => it.Id.Equals(request.MerchType)),
-                MerchOrderPriority.ManualRequest
-            );
+                Enumeration.GetAll<ClothingSize>().FirstOrDefault(it => it.Id.Equals(request.ClothingSize)), 
+           Enumeration.GetAll<MerchType>().FirstOrDefault(it => it.Id.Equals(request.MerchType)), 
+                    MerchOrderPriority.ManualRequest,
+                    MerchOrderStatus.New
+                );
             // check merchpack in Stock-Api to set orderStatus: if it's not available and it is manual request, Cancell this, else set Not Available status:
             newOrder.ChangeStatus(MerchOrderStatus.NotAvailable);
             

@@ -7,17 +7,18 @@ namespace MerchandiseService.Domain.AggregateModels.MerchOrderAggregate
     public class MerchOrder : Entity
     {
         public MerchOrder(
-                            EmployeeId id, 
-                            ClothingSize size, 
-                            MerchType merchType, 
-                            MerchOrderPriority priority)
+                    EmployeeId id, 
+                    ClothingSize size, 
+                    MerchType merchType, 
+                    MerchOrderPriority priority,
+                    MerchOrderStatus status)
         {
             EmployeeId = id;
             MerchType = merchType;
             Priority = priority;
             CreatedDate = new CreatedDate(DateTime.Now);
             SetClothingSize(size);
-            ChangeStatus(MerchOrderStatus.New);
+            Status = status;
         }
         public EmployeeId EmployeeId { get; }
         public ClothingSize ClothingSize { get; private set; }
@@ -41,9 +42,9 @@ namespace MerchandiseService.Domain.AggregateModels.MerchOrderAggregate
         /// 
         public void ChangeStatus(MerchOrderStatus status)
         {
-            if (Status.Equals(AggregateModels.MerchOrderAggregate.MerchOrderStatus.Cancelled))
+            if (Status == MerchOrderStatus.Cancelled)
                 throw new MerchOrderStatusException($"Order was cancelled. Change status unavailable");
-            if (Status.Equals(AggregateModels.MerchOrderAggregate.MerchOrderStatus.GaveOut))
+            if (Status == MerchOrderStatus.GaveOut)
                 throw new MerchOrderStatusException($"Order was gave out. Change status unavailable");
             Status = status;
         }
@@ -52,13 +53,13 @@ namespace MerchandiseService.Domain.AggregateModels.MerchOrderAggregate
         /// Указание даты выдачи заказа
         /// </summary>
         ///
-        public void SetGaveoutDate(GaveOutDate date)
+        public void SetGaveoutDate(DateTime date)
         {
             if (GaveOutDate != null)
                 throw new DateExceptions("Gave out date was already set");
-            if (date.Value <= CreatedDate.Value)
+            if (date <= CreatedDate.Value)
                 throw new DateExceptions("Gave out date can't be earlier that created date");
-            GaveOutDate = date;
+            GaveOutDate = new GaveOutDate(date);
         }
     }
 }
