@@ -5,8 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="RestEase" Version="1.5.5" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
 </Project>
